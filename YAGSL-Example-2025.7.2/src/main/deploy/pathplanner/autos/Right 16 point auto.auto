@@ -11,6 +11,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "AlignToLeft"
+          }
+        },
+        {
           "type": "parallel",
           "data": {
             "commands": [
@@ -80,6 +86,12 @@
           }
         },
         {
+          "type": "named",
+          "data": {
+            "name": "AlignToRight"
+          }
+        },
+        {
           "type": "sequential",
           "data": {
             "commands": [
@@ -120,7 +132,7 @@
       ]
     }
   },
-  "resetOdom": true,
+  "resetOdom": false,
   "folder": null,
   "choreoAuto": false
 }

@@ -70,7 +70,7 @@ public class Setpoints
     {
 // x + front ->, y + left 
       public static final Transform2d coralOffset = new Transform2d(Inches.of(29).in(Meters),
-                                                                    Inches.of(5).in(Meters),
+                                                                    Inches.of(0).in(Meters),
                                                                     Rotation2d.fromDegrees(180));
       public static final Transform2d     algaeOffset = new Transform2d(Inches.of(23).in(Meters),
                                                                     Inches.of(-19).in(Meters),

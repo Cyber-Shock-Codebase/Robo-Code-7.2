@@ -136,6 +136,18 @@ public class RobotContainer
     NamedCommands.registerCommand("dealgea", elevatorsub.DeAlgea());
     NamedCommands.registerCommand("Intake", elevatorsub.runIntakeCommand().until(elevatorsub.CoralReadyTrigger()));
     NamedCommands.registerCommand("LockDrive", Commands.runOnce(drivebase::lock, drivebase).repeatedly());
+    NamedCommands.registerCommand("AlignToLeft", 
+    targetingSystem.setBranchLevel(ReefBranchLevel.L2).andThen(targetingSystem.setBranchSide(ReefBranchSide.LEFT))
+    .andThen(targetingSystem.autoTargetCommand(drivebase::getPose))
+    .andThen(Commands.runOnce(() -> drivebase.getSwerveDrive().field.getObject("target")
+    .setPose(targetingSystem.getCoralTargetPose())))
+    .andThen(targetingSystem.driveToCoralTargetDefer(drivebase)));
+    NamedCommands.registerCommand("AlignToRight", 
+    targetingSystem.setBranchLevel(ReefBranchLevel.L2).andThen(targetingSystem.setBranchSide(ReefBranchSide.LEFT))
+    .andThen(targetingSystem.autoTargetCommand(drivebase::getPose))
+    .andThen(Commands.runOnce(() -> drivebase.getSwerveDrive().field.getObject("target")
+    .setPose(targetingSystem.getCoralTargetPose())))
+    .andThen(targetingSystem.driveToCoralTargetDefer(drivebase)));
 
     
   }
@@ -267,9 +279,10 @@ public class RobotContainer
   public Command getAutonomousCommand()
   {
     // An example command will be run in autonomous
-    return drivebase.getAutonomousCommand("Left 16 Point auto");
+    // return drivebase.getAutonomousCommand("Left 16 Point auto");
     // return drivebase.getAutonomousCommand("Intake shoot test");
     // return autoChooser.getSelected();
+    return drivebase.getAutonomousCommand("Right 16 point auto");
   }
 
   public void setMotorBrake(boolean brake)
